@@ -1,0 +1,94 @@
+google-generativeai
+mistralai
+dotenv
+requests
+fastapi
+uvicorn
+Flask
+streamlit
+pydantic
+httpx
+aiohttp
+langchain
+langchain-core
+langchain-community
+langgraph 
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-mistralai
+langchain-huggingface
+faiss-cpu  
+torch
+transformers
+sentence-transformers
+tiktoken
+
+# LLM APIs
+mistralai
+google-generativeai
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-mistralai
+langchain-huggingface
+
+# LangChain
+langchain
+langchain-core
+langchain-community
+langgraph
+
+# Vector Database
+faiss-cpu
+
+# Embedding Models
+sentence-transformers
+transformers
+torch
+huggingface-hub
+
+# Tokenization
+tiktoken
+
+# Document Loaders
+pypdf
+pymupdf
+unstructured
+python-docx
+
+# Text Splitting
+nltk
+
+
+# Environment Variables
+python-dotenv
+
+# API & Networking
+requests
+httpx
+aiohttp
+
+# Web Frameworks
+fastapi
+uvicorn
+Flask
+streamlit
+
+# Validation
+pydantic
+
+# Data Processing
+numpy
+pandas
+
+# Optional Utilities
+tqdm
+tenacity
+
+
+#Databases
+Chroma
+chromadb
+
+streamlit
