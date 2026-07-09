@@ -72,7 +72,7 @@ if uploaded_file:
     # LLM
     # ---------------------------
     llm = ChatMistralAI(model="mistral-small-2506",
-                        api_key=st.secrets[MISTRAL_API_KEY]
+                        api_key=st.secrets[MISTRAL_API_KEY])
 
     prompt = ChatPromptTemplate.from_messages(
         [
