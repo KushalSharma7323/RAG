@@ -8,6 +8,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 import tempfile
 import os
+import shutil
 
 load_dotenv()
 api_key = os.getenv("MISTRAL_API_KEY")
@@ -49,16 +50,18 @@ if uploaded_file:
     # ---------------------------
     # Embeddings + Vector DB
     # ---------------------------
+
     embedding_model = HuggingFaceEmbeddings()
-    
-  
+
+    # Delete previous DB
+    if os.path.exists("chroma_db"):
+        shutil.rmtree("chroma_db")
 
     vector_store = Chroma.from_documents(
-        documents=docs,
-        embedding=embedding_model,
-        persist_directory = "chroma_db"
-    )
-
+    documents=docs,
+    embedding=embedding_model,
+    persist_directory="chroma_db"
+)
     retriever = vector_store.as_retriever(
         search_type="mmr",
         search_kwargs={
@@ -79,18 +82,20 @@ if uploaded_file:
             (
                 "system",
                 """You are a proffesional AI assistant .
+                If user asks to summarize pdfs then 
                 Your job is  to summarize the PDF provided by user in simple and easy bullet points 
                 getting all the important points and providing the jist of it.
+                else responsd to the questions asked by user based to the provided pdf.
                 """
             ),
             (
                 "human",
                 """Context:
-{context}
+                {context}
 
-Question:
-{question}
-"""
+                Question:
+                {question}
+                """
             )
         ]
     )
