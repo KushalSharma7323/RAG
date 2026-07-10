@@ -13,9 +13,9 @@ load_dotenv()
 api_key = os.getenv("MISTRAL_API_KEY")
 print(api_key)
 
-st.set_page_config(page_title="PDF RAG Chatbot", page_icon="😂")
+st.set_page_config(page_title="PDF RAG Chatbot", page_icon="🤓")
 
-st.title("📄 PDF RAG Chatbot (Upload & Ask Questions)")
+st.title("📄 PDF Summarizer Chatbot (Upload & Ask Questions)")
 
 # ---------------------------
 # Upload PDF
@@ -78,10 +78,10 @@ if uploaded_file:
         [
             (
                 "system",
-                """You are a helpful assistant.
-Use simple language and Hinglish if needed.
-Summarize in bullet points.
-"""
+                """You are a proffesional AI assistant .
+                Your job is  to summarize the PDF provided by user in simple and easy bullet points 
+                getting all the important points and providing the jist of it.
+                """
             ),
             (
                 "human",
