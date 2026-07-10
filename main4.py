@@ -8,6 +8,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 import tempfile
 import os
+import uuid
 import shutil
 
 load_dotenv()
@@ -54,14 +55,14 @@ if uploaded_file:
     embedding_model = HuggingFaceEmbeddings()
 
     # Delete previous DB
-    if os.path.exists("chroma_db"):
-        shutil.rmtree("chroma_db")
+
 
     vector_store = Chroma.from_documents(
     documents=docs,
     embedding=embedding_model,
+    collection_name=str(uuid.uuid4()),
     persist_directory="chroma_db"
-)
+    )
     retriever = vector_store.as_retriever(
         search_type="mmr",
         search_kwargs={
@@ -75,7 +76,7 @@ if uploaded_file:
     # LLM
     # ---------------------------
     llm = ChatMistralAI(model="mistral-small-2506",
-                        api_key=st.secrets["MISTRAL_API_KEY"])
+                        )
 
     prompt = ChatPromptTemplate.from_messages(
         [
